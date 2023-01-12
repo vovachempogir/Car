@@ -18,7 +18,7 @@ public class Main {
 
         Car hundaiAvante = new Car("Hundai", "Avante", 1.6, "Оранжевый", 2016, "Южная Корея");
         hundaiAvante.Car();
-        System.out.println();
+        System.out.println( );
 
         Car default1 = new Car();
         default1.Car();
