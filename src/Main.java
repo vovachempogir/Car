@@ -14,7 +14,7 @@ public class Main {
 
         Car kiaSportage4Generation = new Car("Kia","Sportage 4 generation",2.4,"Красный",2018,"Южная Корея");
         kiaSportage4Generation.Car();
-        System.out.println();
+        System.out.println( );
 
         Car hundaiAvante = new Car("Hundai", "Avante", 1.6, "Оранжевый", 2016, "Южная Корея");
         hundaiAvante.Car();
