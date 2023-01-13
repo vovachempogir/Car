@@ -3,6 +3,7 @@ import transport.Car;
 public class Main {
     public static void main(String[] args) {
         Car ladaGranta = new Car("Lada","Granta",1.7,"Желтый",2015,"Россия");
+        ladaGranta.Car();
         ladaGranta.seasonalTireCheck(ladaGranta);
         System.out.println();
 

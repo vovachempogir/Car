@@ -179,7 +179,6 @@ public class Car {
         System.out.println("Тип кузова: " + getBodyType());
         System.out.println("Регистрационный номер: " + getRegistrationNumber());
         System.out.println("Число сидений: " + getNumberOfSeats());
-        System.out.println();
     }
 }
 
