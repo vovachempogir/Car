@@ -1,7 +1,9 @@
+import transport.Car;
+
 public class Main {
     public static void main(String[] args) {
         Car ladaGranta = new Car("Lada","Granta",1.7,"Желтый",2015,"Россия");
-        ladaGranta.Car();
+        ladaGranta.seasonalTireCheck(ladaGranta);
         System.out.println();
 
         Car audiA850LTDIQuattro = new Car("Audi","A8 50 L TDI quattro",3.0,"Черный",2020,"Германия");
