@@ -10,94 +10,126 @@ public class Car extends Transport {
     private String registrationNumber;
     private int numberOfSeats;
     private boolean summerTires;
+    private Key key;
 
-    public Car(String brand, String model, int year, String country, String color, int maxSpeed) {
+    public static class Key {
+        private final boolean remoteRun;
+        private final boolean withoutAccess;
+
+        public Key(boolean remoteRun, boolean withoutAccess) {
+            this.remoteRun = remoteRun;
+            this.withoutAccess = withoutAccess;
+        }
+
+        public boolean isRemoteRun() {
+            return remoteRun;
+        }
+
+        public boolean isWithoutAccess() {
+            return withoutAccess;
+        }
+
+        @Override
+        public String toString() {
+            return (remoteRun ? "удаленный запуск " : "без удаленного запуска двигателя ") +
+                    (withoutAccess ? "бесключевой доступ " : "бесключевой доступ отсутствует ");
+        }
+    }
+
+    public Car(String brand, String model, double engineVolume, String color, int year, String country, int maxSpeed, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean summerTires, Key key) {
         super(brand, model, year, country, color, maxSpeed);
+        setEngineVolume(engineVolume);
+        setTransmission(transmission);
+        if (bodyType == null || bodyType.isEmpty()) {
+            bodyType = "default";
+        }
+        this.bodyType = bodyType;
+        setRegistrationNumber(registrationNumber);
+        if (numberOfSeats <= 0) {
+            numberOfSeats = 4;
+        }
+        this.numberOfSeats = numberOfSeats;
+        this.summerTires = summerTires;
+        setKey(key);
+
     }
 
 
     public double getEngineVolume() {
-        if (engineVolume <= 0) {
-            engineVolume = 1.5;
-        }
         return engineVolume;
     }
 
     public void setEngineVolume( double engineVolume) {
-        if (engineVolume!=0 ) {
-            this.engineVolume = engineVolume;
+        if (engineVolume <= 0) {
+            engineVolume = 1.5;
         }
+        this.engineVolume = engineVolume;
     }
 
     public String getBodyType() {
-        if (bodyType == null || bodyType.isEmpty()) {
-            bodyType = "default";
-        }
         return bodyType;
     }
     public String getTransmission() {
-        if (transmission == null || transmission.isEmpty()) {
-            transmission = "default";
-        }
         return transmission;
     }
     public void setTransmission(String transmission) {
-        if (transmission!=null && ! transmission.isEmpty() && !transmission.isBlank()) {
-            this.transmission = transmission;
+        if (transmission == null || transmission.isEmpty()) {
+            transmission = "Механика";
         }
+        this.transmission = transmission;
     }
     public String getRegistrationNumber() {
-        if (registrationNumber == null || registrationNumber.length() != 9) {
-            registrationNumber = "х000хх000";
-        }
         return registrationNumber;
     }
 
     public void setRegistrationNumber(String registrationNumber) {
-        if (registrationNumber != null && registrationNumber.length() == 9 && registrationNumber.isBlank()) {
-            this.registrationNumber = registrationNumber;
+        if (registrationNumber == null || registrationNumber.isEmpty()) {
+            registrationNumber = "х000хх000";
         }
-
+        this.registrationNumber = registrationNumber;
     }
 
     public int getNumberOfSeats() {
-        if (numberOfSeats <= 0) {
-            numberOfSeats = 4;
-        }
         return numberOfSeats;
     }
 
-    public boolean getSummerTires() {
+    public boolean isSummerTires() {
         return summerTires;
-    }
-
-    public void seasonalTireCheck(Car car) {
-        LocalDate date = LocalDate.now();
-        int month = date.getMonthValue();
-        if (( month>4 || month<10) && getSummerTires() == true) {
-            System.out.println ("Менять резину не надо");
-        }
-        else {
-            System.out.println ("Сменить шины на сезонные");
-        }
-
     }
 
     public void setSummerTires(boolean summerTires) {
         this.summerTires = summerTires;
     }
 
-    public void Car() {
-        System.out.println("Марка автомобиля: " + getBrand());
-        System.out.println("Модель: " + getModel());
-        System.out.println("Объем двигателя в литрах: " + getEngineVolume());
-        System.out.println("Цвет кузова: " + getColor());
-        System.out.println("Год производства: " + getYear());
-        System.out.println("Страна сборки: " + getCountry());
-        System.out.println("Трансмиссия: " + getTransmission());
-        System.out.println("Тип кузова: " + getBodyType());
-        System.out.println("Регистрационный номер: " + getRegistrationNumber());
-        System.out.println("Число сидений: " + getNumberOfSeats());
+    public void changeTires(int mouth) {
+        if ((mouth >= 11 && mouth <= 12) || (mouth >= 1 && mouth <= 3)) {
+            summerTires = false;
+        }
+        if (mouth >= 4 && mouth <= 10) {
+            summerTires = true;
+        }
+    }
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false,false);
+        }
+        this.key = key;
+    }
+
+
+    public String toString() {
+        return super.toString() + ", " +
+                "Объем двигателя в литрах: " + engineVolume + ", " +
+                "Трансмиссия: " + transmission + ", " +
+                "Тип кузова: " + bodyType + ", " +
+                "Регистрационный номер: " + registrationNumber + ", " +
+                "Число сидений: " + numberOfSeats + ", " +
+                (summerTires ? "летняя" : "зимняя") + " резина" + ", " +
+                key;
     }
 }
 

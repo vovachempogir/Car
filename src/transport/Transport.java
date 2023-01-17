@@ -1,40 +1,43 @@
 package transport;
 
 public abstract class Transport {
-    private String brand;
-    private String model;
-    private int year;
-    private String country;
+    private final String brand;
+    private final String model;
+    private final int year;
+    private final String country;
     private String color;
     private int maxSpeed;
 
     public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.country = country;
-        this.color = color;
-        this.maxSpeed = maxSpeed;
-    }
-
-    public String getBrand() {
         if (brand == null || brand.isEmpty()) {
             brand = "default";
         }
+        this.brand = brand;
+        if (model == null || model.isEmpty()) {
+            model = "default";
+        }
+        this.model = model;
+        if (year <= 0) {
+            year = 2000;
+        }
+        this.year = year;
+        if (country == null || country.isEmpty()) {
+            country = "default";
+        }
+        this.country = country;
+        setColor(color);
+        setMaxSpeed(maxSpeed);
+    }
+
+    public String getBrand() {
         return brand;
     }
 
     public String getModel() {
-        if (model == null || model.isEmpty()) {
-            model = "default";
-        }
         return model;
     }
 
     public String getColor() {
-        if (color == null || color.isEmpty()) {
-            color = "Белый";
-        }
         return color;
     }
 
@@ -45,23 +48,14 @@ public abstract class Transport {
     }
 
     public int getYear() {
-        if (year <= 0) {
-            year = 2000;
-        }
         return year;
     }
 
     public String getCountry() {
-        if (country == null || country.isEmpty()) {
-            country = "default";
-        }
         return country;
     }
 
     public int getMaxSpeed() {
-        if (maxSpeed <= 0) {
-            maxSpeed = 100;
-        }
         return maxSpeed;
     }
 
@@ -71,4 +65,13 @@ public abstract class Transport {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Марка автомобиля: " + brand + ", " +
+                "Модель: " + model + ", " +
+                "Год производства: " + year + ", " +
+                "Страна сборки: " + country + ", " +
+                "Цвет кузова: " + color + ", " +
+                "Максимальная скорость: " + maxSpeed;
+    }
 }
