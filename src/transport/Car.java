@@ -2,74 +2,19 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
-    public static class Key{
-        private boolean remoteEngineStart;
-        private boolean keylessEntry;
+public class Car extends Transport {
 
-        public Key(boolean remoteEngineStart,boolean keylessEntry) {
-            this.remoteEngineStart = remoteEngineStart;
-            this.keylessEntry = keylessEntry;
-        }
-
-        public boolean getRemoteEngineStart() {
-            return remoteEngineStart;
-        }
-
-        public boolean getKeylessEntry() {
-            return keylessEntry;
-        }
-
-    }
-    private String brand;
-    private String model;
     private double engineVolume;
-    private String color;
-    private int year;
-    private String country;
     private String transmission;
     private String bodyType;
     private String registrationNumber;
     private int numberOfSeats;
     private boolean summerTires;
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String county) {
-        this.brand = brand;
-        this.model = model;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.year = year;
-        this.country = county;
+    public Car(String brand, String model, int year, String country, String color, int maxSpeed) {
+        super(brand, model, year, country, color, maxSpeed);
     }
 
-    public Car(){
-        brand = "default";
-        model = "default";
-        country = "default";
-        if (engineVolume <= 0) {
-            engineVolume = 1.5;
-        }
-        if (color == null) {
-            color = "Белый";
-        }
-        if (year <= 0) {
-            year = 2000;
-        }
-    }
-
-    public String getBrand() {
-        if (brand == null || brand.isEmpty()) {
-            brand = "default";
-        }
-        return brand;
-    }
-
-    public String getModel() {
-        if (model == null || model.isEmpty()) {
-            model = "default";
-        }
-        return model;
-    }
 
     public double getEngineVolume() {
         if (engineVolume <= 0) {
@@ -82,32 +27,6 @@ public class Car {
         if (engineVolume!=0 ) {
             this.engineVolume = engineVolume;
         }
-    }
-
-    public String getColor() {
-        if (color == null || color.isEmpty()) {
-            color = "Белый";
-        }
-        return color;
-    }
-    public void setColor( String color) {
-        if (color!=null && ! color.isEmpty()&& !color.isBlank()) {
-            this.color = color;
-        }
-    }
-
-    public int getYear() {
-        if (year <= 0) {
-            year = 2000;
-        }
-        return year;
-    }
-
-    public String getCountry() {
-        if (country == null || country.isEmpty()) {
-            country = "default";
-        }
-        return country;
     }
 
     public String getBodyType() {
@@ -123,7 +42,7 @@ public class Car {
         return transmission;
     }
     public void setTransmission(String transmission) {
-        if (transmission!=null && ! transmission.isEmpty()&& !transmission.isBlank()) {
+        if (transmission!=null && ! transmission.isEmpty() && !transmission.isBlank()) {
             this.transmission = transmission;
         }
     }
