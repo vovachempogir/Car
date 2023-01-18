@@ -1,8 +1,8 @@
 package transport;
 
-public class Bus extends Transport<Driver_D> implements Competing{
+public class Truck extends Transport<Driver_C> implements Competing {
 
-    public Bus(String brand, String model, double engineVolume, Driver_D driver) {
+    public Truck(String brand, String model, double engineVolume, Driver_C driver) {
         super(brand, model, engineVolume, driver);
     }
 
@@ -31,9 +31,10 @@ public class Bus extends Transport<Driver_D> implements Competing{
 
     @Override
     public void maxSpeed() {
-        int minBount = 100;
-        int maxBount = 150;
+        int minBount = 120;
+        int maxBount = 160;
         int maxSpeed = (int) (minBount + (maxBount - minBount) * Math.random());
         System.out.println("Максимальная скорость " + maxSpeed);
     }
+
 }
