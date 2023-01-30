@@ -2,8 +2,21 @@ package transport;
 
 public class Bus extends Transport<Driver_D> implements Competing{
 
-    public Bus(String brand, String model, double engineVolume, Driver_D driver) {
+    private NumberOfSeats numberOfSeats;
+
+    public Bus(String brand, String model, double engineVolume, Driver_D driver, NumberOfSeats numberOfSeats) {
         super(brand, model, engineVolume, driver);
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    @Override
+    public void printType() {
+        if (numberOfSeats == null) {
+            System.out.println("не указанно количество посадочных мест");
+        } else {
+            System.out.println("количество посадочных мест " + numberOfSeats.getNumberOfSeatsLowerLimit() + " мест до " +
+                    numberOfSeats.getNumberOfSeatsUpperLimit() + " мест");
+        }
     }
 
     @Override

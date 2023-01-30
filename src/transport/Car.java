@@ -1,10 +1,29 @@
 package transport;
 
-import java.time.LocalDate;
 public class Car extends Transport<Driver_B> implements Competing {
 
-    public Car(String brand, String model, double engineVolume, Driver_B driver) {
+    private BodyType bodyType;
+
+    public Car(String brand, String model, double engineVolume, Driver_B driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
+        this.bodyType = bodyType;
+    }
+
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("не введен тип кузова");
+        } else {
+            System.out.println(bodyType);
+        }
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override

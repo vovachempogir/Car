@@ -2,9 +2,26 @@ package transport;
 
 public class Truck extends Transport<Driver_C> implements Competing {
 
-    public Truck(String brand, String model, double engineVolume, Driver_C driver) {
+    private LoadCapacity loadCapacity;
+
+    public Truck(String brand, String model, double engineVolume, Driver_C driver,LoadCapacity loadCapacity) {
         super(brand, model, engineVolume, driver);
+        this.loadCapacity = loadCapacity;
     }
+
+    @Override
+    public void printType() {
+        if (loadCapacity == null) {
+            System.out.println("не указана грузоподъемность");
+        } else {
+            String loadCapacityLowerLimit = loadCapacity.getLoadCapacityLowerLimit() == null ? "" : " от " +
+                    loadCapacity.getLoadCapacityLowerLimit() + " тон";
+            String loadCapacityUpperLimit = loadCapacity.getLoadCapacityUpperLimit() == null ? "" : " до " +
+                    loadCapacity.getLoadCapacityUpperLimit() + " тон";
+            System.out.println("грузоподъемность " + loadCapacityLowerLimit + loadCapacityUpperLimit);
+        }
+    }
+
 
     @Override
     public void startMove() {
