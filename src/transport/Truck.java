@@ -13,12 +13,8 @@ public class Truck extends Transport<Driver_C> implements Competing {
     public void printType() {
         if (loadCapacity == null) {
             System.out.println("не указана грузоподъемность");
-        } else {
-            String loadCapacityLowerLimit = loadCapacity.getLoadCapacityLowerLimit() == null ? "" : " от " +
-                    loadCapacity.getLoadCapacityLowerLimit() + " тон";
-            String loadCapacityUpperLimit = loadCapacity.getLoadCapacityUpperLimit() == null ? "" : " до " +
-                    loadCapacity.getLoadCapacityUpperLimit() + " тон";
-            System.out.println("грузоподъемность " + loadCapacityLowerLimit + loadCapacityUpperLimit);
+        }else{
+            System.out.println(loadCapacity);
         }
     }
 

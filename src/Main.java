@@ -30,10 +30,10 @@ public class Main {
 
         for (int i = 1; i <= 4; i++) {
             Driver_D driver_d = new Driver_D("Driver D " + i, true, 1 + i);
-            Bus bus = new Bus("Bus brand " + i, "Bus Brand " + i, 3.5,driver_d, NumberOfSeats.NUMBER_OF_SEATS_MEDIUM);
+            Bus bus = new Bus("Bus brand " + i, "Bus Brand " + i, 3.5,driver_d, NumberOfSeats.MEDIUM);
             printInfo(bus);
             bus.printType();
-            Truck truck = new Truck("Truck brand " + i, "Truck model " + i, 4 + i, new Driver_C("Driver C " + i, true, 6 + i),LoadCapacity.LOAD_CAPACITY_N1);
+            Truck truck = new Truck("Truck brand " + i, "Truck model " + i, 4 + i, new Driver_C("Driver C " + i, true, 6 + i),LoadCapacity.N1);
             printInfo(truck);
             truck.printType();
 

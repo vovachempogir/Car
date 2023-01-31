@@ -14,8 +14,7 @@ public class Bus extends Transport<Driver_D> implements Competing{
         if (numberOfSeats == null) {
             System.out.println("не указанно количество посадочных мест");
         } else {
-            System.out.println("количество посадочных мест " + numberOfSeats.getNumberOfSeatsLowerLimit() + " мест до " +
-                    numberOfSeats.getNumberOfSeatsUpperLimit() + " мест");
+            System.out.println(numberOfSeats);
         }
     }
 

@@ -1,11 +1,11 @@
 package transport;
 
 public enum NumberOfSeats {
-    NUMBER_OF_SEATS_EXTREMELY_SMALL(0, 10),
-    NUMBER_OF_SEATS_SMALL(10, 25),
-    NUMBER_OF_SEATS_MEDIUM(40, 50),
-    NUMBER_OF_SEATS_LARGE(60, 80),
-    NUMBER_OF_SEATS_EXTREMELY_LARGE(100, 120);
+    EXTREMELY_SMALL(0, 10),
+    SMALL(10, 25),
+    MEDIUM(40, 50),
+    LARGE(60, 80),
+    EXTREMELY_LARGE(100, 120);
 
     private final Integer numberOfSeatsLowerLimit;
     private final Integer numberOfSeatsUpperLimit;
@@ -21,5 +21,11 @@ public enum NumberOfSeats {
 
     public Integer getNumberOfSeatsUpperLimit() {
         return numberOfSeatsUpperLimit;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Количество мест от " + numberOfSeatsLowerLimit + " до " + numberOfSeatsUpperLimit;
     }
 }
