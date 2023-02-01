@@ -50,4 +50,10 @@ public class Truck extends Transport<Driver_C> implements Competing {
         System.out.println("Максимальная скорость " + maxSpeed);
     }
 
+    @Override
+    public void diagnosticsPass() {
+        System.out.println("машина " + getBrand() + " " + getModel() + " проходит диагностику ");
+
+    }
+
 }

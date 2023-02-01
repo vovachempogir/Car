@@ -1,15 +1,29 @@
 package transport;
 
+import exception.CarLicenceException;
+
 public abstract class Driver {
 
     private String name;
-    private boolean DriverLicense;
+    private boolean driverLicense;
     private int practiceDriveInYears;
 
-    public Driver(String name, boolean driverLicense, int practiceDriveInYears) {
-        this.name = name;
-        DriverLicense = driverLicense;
-        this.practiceDriveInYears = practiceDriveInYears;
+    public Driver(String name, boolean driverLicense, int practiceDriveInYears) throws CarLicenceException {
+        if (name == null || name.isEmpty()) {
+            this.name = "Имя";
+        } else {
+            this.name = name;
+        }
+        if (driverLicense == true) {
+            this.driverLicense = true;
+        } else {
+            throw new CarLicenceException(this, "без прав управлять автомобилем нельзя");
+        }
+        if (practiceDriveInYears <= 0) {
+            this.practiceDriveInYears = 1;
+        } else {
+            this.practiceDriveInYears = practiceDriveInYears;
+        }
     }
 
     public String getName() {
@@ -21,11 +35,11 @@ public abstract class Driver {
     }
 
     public boolean isDriverLicense() {
-        return DriverLicense;
+        return driverLicense;
     }
 
     public void setDriverLicense(boolean driverLicense) {
-        DriverLicense = driverLicense;
+        driverLicense = driverLicense;
     }
 
     public int getPracticeDriveInYears() {

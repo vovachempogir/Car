@@ -1,7 +1,8 @@
+import exception.CarLicenceException;
 import transport.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CarLicenceException {
         Car ladaGranta = new Car("Lada","Granta",1.7, new Driver_B("Sergey", true, 5),BodyType.BODY_TYPE_SEDAN);
         System.out.println(ladaGranta);
         printInfo(ladaGranta);
@@ -20,7 +21,7 @@ public class Main {
         bmwZ8.printType();
         System.out.println();
 
-        Car kiaSportage4Generation = new Car("Kia","Sportage 4 generation",2.4,new Driver_B("Vladislav",false,0),BodyType.BODY_TYPE_HATCHBACK);
+        Car kiaSportage4Generation = new Car("Kia","Sportage 4 generation",2.4,new Driver_B("Vladislav",true,4),BodyType.BODY_TYPE_HATCHBACK);
         System.out.println(kiaSportage4Generation);
         printInfo(kiaSportage4Generation);
         kiaSportage4Generation.printType();

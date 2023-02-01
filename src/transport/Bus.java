@@ -48,4 +48,9 @@ public class Bus extends Transport<Driver_D> implements Competing{
         int maxSpeed = (int) (minBount + (maxBount - minBount) * Math.random());
         System.out.println("Максимальная скорость " + maxSpeed);
     }
+
+    @Override
+    public void diagnosticsPass() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException(" автобус диагностику проходить не может");
+    }
 }

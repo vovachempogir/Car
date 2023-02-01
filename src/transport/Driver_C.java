@@ -1,7 +1,10 @@
 package transport;
 
+import exception.CarLicenceException;
+
 public class Driver_C extends Driver{
-    public Driver_C(String name, boolean driverLicense, int practiceDriveInYears) {
+
+    public Driver_C(String name, boolean driverLicense, int practiceDriveInYears) throws CarLicenceException {
         super(name, driverLicense, practiceDriveInYears);
     }
 

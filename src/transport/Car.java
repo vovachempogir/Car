@@ -77,6 +77,12 @@ public class Car extends Transport<Driver_B> implements Competing {
         System.out.println("Максимальная скорость " + maxSpeed);
     }
 
+    @Override
+    public void diagnosticsPass() {
+        System.out.println("машина " + getBrand() + " " + getModel() + " проходит диагностику ");
+
+    }
+
 
 
     //    private double engineVolume;

@@ -104,4 +104,17 @@ public abstract class Transport<T extends Driver > implements Competing{
 //                "Цвет кузова: " + color + ", " +
 //                "Максимальная скорость: " + maxSpeed;
     }
+
+    public abstract void diagnosticsPass();
+
+    public static void performDiagnostics(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                transport.diagnosticsPass();
+            } catch (UnsupportedOperationException e) {
+                System.out.println("ошибка");
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
