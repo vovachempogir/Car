@@ -1,11 +1,14 @@
 package transport;
 
+import transport.*;
+import java.util.*;
+
 public class Bus extends Transport<Driver_D> implements Competing{
 
     private NumberOfSeats numberOfSeats;
 
-    public Bus(String brand, String model, double engineVolume, Driver_D driver, NumberOfSeats numberOfSeats) {
-        super(brand, model, engineVolume, driver);
+    public Bus(String brand, String model, double engineVolume, Driver_D driver, ArrayList<Mechanic> mechanics, NumberOfSeats numberOfSeats) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.numberOfSeats = numberOfSeats;
     }
 
@@ -15,6 +18,14 @@ public class Bus extends Transport<Driver_D> implements Competing{
             System.out.println("не указанно количество посадочных мест");
         } else {
             System.out.println(numberOfSeats);
+        }
+    }
+
+    public void mechanic() {
+        if (mechanics == null) {
+            System.out.println("нет механика");
+        } else {
+            System.out.println(mechanics);
         }
     }
 
@@ -53,4 +64,28 @@ public class Bus extends Transport<Driver_D> implements Competing{
     public void diagnosticsPass() throws UnsupportedOperationException {
         throw new UnsupportedOperationException(" автобус диагностику проходить не может");
     }
+
+    public void fixTheCar() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_BUS ||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.fixTheCar(this);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void carryOutMaintenance() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_BUS||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.carryOutMaintenance(this);
+                }
+            }
+        }
+    }
+
 }

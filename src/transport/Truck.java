@@ -1,11 +1,14 @@
 package transport;
 
+import transport.*;
+import java.util.*;
+
 public class Truck extends Transport<Driver_C> implements Competing {
 
     private LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineVolume, Driver_C driver,LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume, driver);
+    public Truck(String brand, String model, double engineVolume, Driver_C driver,ArrayList<Mechanic> mechanics,LoadCapacity loadCapacity) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.loadCapacity = loadCapacity;
     }
 
@@ -18,6 +21,14 @@ public class Truck extends Transport<Driver_C> implements Competing {
         }
     }
 
+    @Override
+    public void mechanic() {
+        if (mechanics == null) {
+            System.out.println("нет механика");
+        } else {
+            System.out.println(mechanics);
+        }
+    }
 
     @Override
     public void startMove() {
@@ -54,6 +65,29 @@ public class Truck extends Transport<Driver_C> implements Competing {
     public void diagnosticsPass() {
         System.out.println("машина " + getBrand() + " " + getModel() + " проходит диагностику ");
 
+    }
+
+    public void fixTheCar() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_TRUCK ||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.fixTheCar(this);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void carryOutMaintenance() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_TRUCK||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.carryOutMaintenance(this);
+                }
+            }
+        }
     }
 
 }

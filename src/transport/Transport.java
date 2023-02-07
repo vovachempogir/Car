@@ -1,16 +1,20 @@
 package transport;
 
-public abstract class Transport<T extends Driver > implements Competing{
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineVolume;
     private T driver;
+    protected ArrayList<Mechanic> mechanics;
 //    private final int year;
 //    private final String country;
 //    private String color;
 //    private int maxSpeed;
 
-    public Transport(String brand, String model, double engineVolume, T driver) {
+    public Transport(String brand, String model, double engineVolume, T driver, ArrayList<Mechanic> mechanics) {
         if (brand == null || brand.isEmpty()) {
             brand = "default";
         }
@@ -21,6 +25,9 @@ public abstract class Transport<T extends Driver > implements Competing{
         this.model = model;
         setEngineVolume(engineVolume);
         setDriver(driver);
+        this.mechanics = mechanics;
+
+
 //        if (year <= 0) {
 //            year = 2000;
 //        }
@@ -33,7 +40,13 @@ public abstract class Transport<T extends Driver > implements Competing{
 //        setMaxSpeed(maxSpeed);
     }
 
-    public abstract void printType();
+    public ArrayList<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    public void setMechanics(ArrayList<Mechanic> mechanics) {
+        this.mechanics = mechanics;
+    }
 
     public String getBrand() {
         return brand;
@@ -47,7 +60,7 @@ public abstract class Transport<T extends Driver > implements Competing{
         return engineVolume;
     }
 
-    public void setEngineVolume( double engineVolume) {
+    public void setEngineVolume(double engineVolume) {
         if (engineVolume <= 0) {
             engineVolume = 1.5;
         }
@@ -61,6 +74,7 @@ public abstract class Transport<T extends Driver > implements Competing{
     public void setDriver(T driver) {
         this.driver = driver;
     }
+
 
     //    public String getColor() {
 //        return color;
@@ -106,6 +120,14 @@ public abstract class Transport<T extends Driver > implements Competing{
     }
 
     public abstract void diagnosticsPass();
+
+    public abstract void printType();
+
+    public abstract void mechanic();
+
+    public abstract void fixTheCar();
+
+    public abstract void carryOutMaintenance();
 
     public static void performDiagnostics(Transport... transports) {
         for (Transport transport : transports) {

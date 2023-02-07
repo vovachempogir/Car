@@ -1,13 +1,18 @@
 package transport;
 
+import transport.*;
+import java.util.*;
+
 public class Car extends Transport<Driver_B> implements Competing {
 
     private BodyType bodyType;
 
-    public Car(String brand, String model, double engineVolume, Driver_B driver, BodyType bodyType) {
-        super(brand, model, engineVolume, driver);
+    public Car(String brand, String model, double engineVolume, Driver_B driver, ArrayList<Mechanic> mechanics, BodyType bodyType) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.bodyType = bodyType;
     }
+
+
 
     @Override
     public void printType() {
@@ -15,6 +20,38 @@ public class Car extends Transport<Driver_B> implements Competing {
             System.out.println("не введен тип кузова");
         } else {
             System.out.println(bodyType);
+        }
+    }
+
+    @Override
+    public void mechanic() {
+        if (mechanics == null) {
+            System.out.println("нет механика");
+        } else {
+            System.out.println(mechanics);
+        }
+    }
+
+    public void fixTheCar() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_CAR ||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.fixTheCar(this);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void carryOutMaintenance() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_CAR||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.carryOutMaintenance(this);
+                }
+            }
         }
     }
 
