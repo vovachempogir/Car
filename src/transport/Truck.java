@@ -31,6 +31,16 @@ public class Truck extends Transport<Driver_C> implements Competing {
     }
 
     @Override
+    public void ServiceStation() {
+
+    }
+
+    @Override
+    public void carryOutVehicle() {
+        System.out.println(" осуществляет техническое обслуживание " + getMechanics());
+    }
+
+    @Override
     public void startMove() {
         System.out.println(getBrand() + " начал движение");
     }
@@ -89,5 +99,7 @@ public class Truck extends Transport<Driver_C> implements Competing {
             }
         }
     }
+
+
 
 }

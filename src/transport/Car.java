@@ -1,6 +1,5 @@
 package transport;
 
-import transport.*;
 import java.util.*;
 
 public class Car extends Transport<Driver_B> implements Competing {
@@ -61,6 +60,23 @@ public class Car extends Transport<Driver_B> implements Competing {
 
     public void setBodyType(BodyType bodyType) {
         this.bodyType = bodyType;
+    }
+
+    @Override
+    public void ServiceStation() {
+
+    }
+
+    @Override
+    public void carryOutVehicle() {
+        if (mechanics != null) {
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_CAR||
+                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
+                    mechanic.carryOutMaintenance(this);
+                }
+            }
+        }
     }
 
     @Override

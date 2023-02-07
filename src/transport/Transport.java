@@ -9,10 +9,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     private double engineVolume;
     private T driver;
     protected ArrayList<Mechanic> mechanics;
-//    private final int year;
-//    private final String country;
-//    private String color;
-//    private int maxSpeed;
+    private ServiceStation serviceStation;
 
     public Transport(String brand, String model, double engineVolume, T driver, ArrayList<Mechanic> mechanics) {
         if (brand == null || brand.isEmpty()) {
@@ -26,18 +23,14 @@ public abstract class Transport<T extends Driver> implements Competing {
         setEngineVolume(engineVolume);
         setDriver(driver);
         this.mechanics = mechanics;
+    }
 
+    public ServiceStation getServiceStation() {
+        return serviceStation;
+    }
 
-//        if (year <= 0) {
-//            year = 2000;
-//        }
-//        this.year = year;
-//        if (country == null || country.isEmpty()) {
-//            country = "default";
-//        }
-//        this.country = country;
-//        setColor(color);
-//        setMaxSpeed(maxSpeed);
+    public void setServiceStation(ServiceStation serviceStation) {
+        this.serviceStation = serviceStation;
     }
 
     public ArrayList<Mechanic> getMechanics() {
@@ -47,6 +40,10 @@ public abstract class Transport<T extends Driver> implements Competing {
     public void setMechanics(ArrayList<Mechanic> mechanics) {
         this.mechanics = mechanics;
     }
+
+    public abstract void ServiceStation();
+
+    public abstract void carryOutVehicle();
 
     public String getBrand() {
         return brand;
@@ -75,8 +72,55 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.driver = driver;
     }
 
+    public abstract void startMove();
 
-    //    public String getColor() {
+    public abstract void finishMove();
+
+    @Override
+    public String toString() {
+        return "Марка автомобиля: " + brand + ", " +
+                "Модель: " + model + ", " +
+                "Объем двигателя: " + engineVolume;
+    }
+
+    public abstract void diagnosticsPass();
+
+    public abstract void printType();
+
+    public abstract void mechanic();
+
+    public abstract void fixTheCar();
+
+    public abstract void carryOutMaintenance();
+
+    public static void performDiagnostics(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                transport.diagnosticsPass();
+            } catch (UnsupportedOperationException e) {
+                System.out.println("ошибка");
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+//    private final int year;
+//    private final String country;
+//    private String color;
+//    private int maxSpeed;
+
+//        if (year <= 0) {
+//            year = 2000;
+//        }
+//        this.year = year;
+//        if (country == null || country.isEmpty()) {
+//            country = "default";
+//        }
+//        this.country = country;
+//        setColor(color);
+//        setMaxSpeed(maxSpeed);
+
+//    public String getColor() {
 //        return color;
 //    }
 //
@@ -104,39 +148,7 @@ public abstract class Transport<T extends Driver> implements Competing {
 //        }
 //    }
 
-    public abstract void startMove();
-
-    public abstract void finishMove();
-
-    @Override
-    public String toString() {
-        return "Марка автомобиля: " + brand + ", " +
-                "Модель: " + model + ", " +
-                "Объем двигателя: " + engineVolume;
 //                "Год производства: " + year + ", " +
 //                "Страна сборки: " + country + ", " +
 //                "Цвет кузова: " + color + ", " +
 //                "Максимальная скорость: " + maxSpeed;
-    }
-
-    public abstract void diagnosticsPass();
-
-    public abstract void printType();
-
-    public abstract void mechanic();
-
-    public abstract void fixTheCar();
-
-    public abstract void carryOutMaintenance();
-
-    public static void performDiagnostics(Transport... transports) {
-        for (Transport transport : transports) {
-            try {
-                transport.diagnosticsPass();
-            } catch (UnsupportedOperationException e) {
-                System.out.println("ошибка");
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-}

@@ -88,4 +88,13 @@ public class Bus extends Transport<Driver_D> implements Competing{
         }
     }
 
+    @Override
+    public void ServiceStation() {
+    }
+
+    @Override
+    public void carryOutVehicle() {
+        System.out.println(" осуществляет техническое обслуживание " + getMechanics());
+    }
+
 }

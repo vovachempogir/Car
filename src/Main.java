@@ -2,6 +2,7 @@ import exception.CarLicenceException;
 import transport.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main {
@@ -92,17 +93,34 @@ public class Main {
         mercedesBenzSprinter.fixTheCar();
         ural.fixTheCar();
 
-        ladaGranta.carryOutMaintenance();
         System.out.println(transports);
+        System.out.println();
+        System.out.println();
 
-//        Car hundaiAvante = new Car("Hundai", "Avante", 1.6,"Ораневый",2016,"Южная Корея",  203,"Механика","Седан","в67па875",5,true,null);
-//        System.out.println(hundaiAvante);
-//        System.out.println( );
+        ladaGranta.carryOutMaintenance();
+        System.out.println();
+        ladaGranta.carryOutVehicle();
+        System.out.println();
+
+
+        Queue<Transport> transportQueue = new LinkedList<>();
+        transportQueue.offer(ladaGranta);
+        transportQueue.offer(audiA850LTDIQuattro);
+        transportQueue.offer(bmwZ8);
+        transportQueue.offer(kiaSportage4Generation);
+        transportQueue.offer(mercedesBenzSprinter);
+        transportQueue.offer(ural);
+        System.out.println("Очередь " + transportQueue);
+
+
     }
+
 
     private static void printInfo(Transport<?> transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");
     }
-
-
 }
+
+//        Car hundaiAvante = new Car("Hundai", "Avante", 1.6,"Ораневый",2016,"Южная Корея",  203,"Механика","Седан","в67па875",5,true,null);
+//        System.out.println(hundaiAvante);
+//        System.out.println( );
