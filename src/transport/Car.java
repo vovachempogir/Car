@@ -62,22 +62,6 @@ public class Car extends Transport<Driver_B> implements Competing {
         this.bodyType = bodyType;
     }
 
-    @Override
-    public void ServiceStation() {
-
-    }
-
-    @Override
-    public void carryOutVehicle() {
-        if (mechanics != null) {
-            for (Mechanic mechanic : mechanics) {
-                if (mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_CAR||
-                        mechanic.getRepairSpecialization() == RepairSpecialization.SPECIALIZATION_UNIVERSAL) {
-                    mechanic.carryOutMaintenance(this);
-                }
-            }
-        }
-    }
 
     @Override
     public String getBrand() {

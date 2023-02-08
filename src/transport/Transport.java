@@ -9,7 +9,6 @@ public abstract class Transport<T extends Driver> implements Competing {
     private double engineVolume;
     private T driver;
     protected ArrayList<Mechanic> mechanics;
-    private ServiceStation serviceStation;
 
     public Transport(String brand, String model, double engineVolume, T driver, ArrayList<Mechanic> mechanics) {
         if (brand == null || brand.isEmpty()) {
@@ -25,14 +24,6 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.mechanics = mechanics;
     }
 
-    public ServiceStation getServiceStation() {
-        return serviceStation;
-    }
-
-    public void setServiceStation(ServiceStation serviceStation) {
-        this.serviceStation = serviceStation;
-    }
-
     public ArrayList<Mechanic> getMechanics() {
         return mechanics;
     }
@@ -40,10 +31,6 @@ public abstract class Transport<T extends Driver> implements Competing {
     public void setMechanics(ArrayList<Mechanic> mechanics) {
         this.mechanics = mechanics;
     }
-
-    public abstract void ServiceStation();
-
-    public abstract void carryOutVehicle();
 
     public String getBrand() {
         return brand;
@@ -72,16 +59,16 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.driver = driver;
     }
 
-    public abstract void startMove();
-
-    public abstract void finishMove();
-
     @Override
     public String toString() {
         return "Марка автомобиля: " + brand + ", " +
                 "Модель: " + model + ", " +
                 "Объем двигателя: " + engineVolume;
     }
+
+    public abstract void startMove();
+
+    public abstract void finishMove();
 
     public abstract void diagnosticsPass();
 
@@ -92,6 +79,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void fixTheCar();
 
     public abstract void carryOutMaintenance();
+
 
     public static void performDiagnostics(Transport... transports) {
         for (Transport transport : transports) {

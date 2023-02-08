@@ -1,34 +1,42 @@
 package transport;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
-public class ServiceStation extends Mechanic {
+public class ServiceStation {
+    private Transport transportQueue;
 
-    private ArrayList<Mechanic> mechanics;
+    public ServiceStation(Transport transportQueue) {
+        this.transportQueue = transportQueue;
+    }
 
-    public ServiceStation(String name, String company, RepairSpecialization repairSpecialization) {
-        super(name, company, repairSpecialization);
+    public void transportQueue() {
+        Queue<Transport> transportQueue = new LinkedList<>();
+        System.out.println("Авто в очереди" + transportQueue);
+
     }
 
 
-    public void carryOutVehicle(ArrayList<Mechanic> mechanics) {
-        System.out.println(this.toString() + " проводит техосмотр компания " + getCompany());
+    public void carryOutVehicle() {
+        System.out.println(this.toString() + " проводит техосмотр компания " + transportQueue);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(transportQueue);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Queue<Transport> transportQueue = (Queue<Transport>) this.transportQueue;
+        return Objects.equals(transportQueue, transportQueue);
     }
 
     @Override
     public String toString() {
-        return "Проводит техосмотр " + Mechanic.class;
+        return "Станция техобслуживания " + transportQueue;
     }
 }

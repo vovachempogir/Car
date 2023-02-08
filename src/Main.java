@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main {
+    protected ServiceStation serviceStation;
+
     public static void main(String[] args) throws CarLicenceException {
         ArrayList<Mechanic> mechanics = new ArrayList<>();
         Mechanic andrey = new Mechanic("Андрей", "Авалон", RepairSpecialization.SPECIALIZATION_CAR);
@@ -62,18 +64,18 @@ public class Main {
         System.out.println(kiaSportage4Generation);
         printInfo(kiaSportage4Generation);
         kiaSportage4Generation.printType();
-        System.out.println( );
+        System.out.println();
 
-        Bus mercedesBenzSprinter = new Bus("Meredes-Benz", "Sprinter",3.0, evgeniy, mechanics, NumberOfSeats.SMALL);
-        Truck ural = new Truck("ural", "4320", 6.6,valeriy, mechanics, LoadCapacity.N2);
+        Bus mercedesBenzSprinter = new Bus("Meredes-Benz", "Sprinter", 3.0, evgeniy, mechanics, NumberOfSeats.SMALL);
+        Truck ural = new Truck("ural", "4320", 6.6, valeriy, mechanics, LoadCapacity.N2);
 
         for (int i = 1; i <= 4; i++) {
             Driver_D driver_d = new Driver_D("Driver D " + i, true, 1 + i);
-            Bus bus = new Bus("Bus brand " + i, "Bus Brand " + i, 3.5,driverD, mechanics, NumberOfSeats.MEDIUM);
+            Bus bus = new Bus("Bus brand " + i, "Bus Brand " + i, 3.5, driverD, mechanics, NumberOfSeats.MEDIUM);
             printInfo(bus);
             bus.printType();
             System.out.println();
-            Truck truck = new Truck("Truck brand " + i, "Truck model " + i, 4 + i,driverC, mechanics,LoadCapacity.N1);
+            Truck truck = new Truck("Truck brand " + i, "Truck model " + i, 4 + i, driverC, mechanics, LoadCapacity.N1);
             printInfo(truck);
             truck.printType();
             System.out.println();
@@ -99,9 +101,7 @@ public class Main {
 
         ladaGranta.carryOutMaintenance();
         System.out.println();
-        ladaGranta.carryOutVehicle();
         System.out.println();
-
 
         Queue<Transport> transportQueue = new LinkedList<>();
         transportQueue.offer(ladaGranta);
@@ -110,7 +110,7 @@ public class Main {
         transportQueue.offer(kiaSportage4Generation);
         transportQueue.offer(mercedesBenzSprinter);
         transportQueue.offer(ural);
-        System.out.println("Очередь " + transportQueue);
+        System.out.println("В очереди " + transportQueue);
 
 
     }
