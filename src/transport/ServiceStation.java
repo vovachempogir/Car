@@ -5,21 +5,30 @@ import java.util.Objects;
 import java.util.Queue;
 
 public class ServiceStation {
-    private Transport transportQueue;
+    private Queue<Transport> transportQueue;
 
-    public ServiceStation(Transport transportQueue) {
+    public ServiceStation(Queue<Transport> transportQueue) {
         this.transportQueue = transportQueue;
     }
 
-    public void transportQueue() {
-        Queue<Transport> transportQueue = new LinkedList<>();
-        System.out.println("Авто в очереди" + transportQueue);
+    public Queue<Transport> getTransportQueue() {
+        return transportQueue;
+    }
 
+    public void setTransportQueue(Queue<Transport> transportQueue) {
+        this.transportQueue = transportQueue;
+    }
+
+    public Queue<Transport> transportsQueue(){
+        Queue<Transport> transportsQueue = new LinkedList<>();
+        for (Transport transport : transportQueue)
+        System.out.println("Авто в очереди" + transportQueue);
+        return transportsQueue();
     }
 
 
-    public void carryOutVehicle() {
-        System.out.println(this.toString() + " проводит техосмотр компания " + transportQueue);
+    public void carryOutVehicle(Transport transport) {
+        System.out.println(this.toString() + "Авто в очереди: " + transportQueue);
     }
 
     @Override

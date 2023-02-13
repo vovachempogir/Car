@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main {
-    protected ServiceStation serviceStation;
+    protected Queue<ServiceStation> transportQueue;
 
     public static void main(String[] args) throws CarLicenceException {
         ArrayList<Mechanic> mechanics = new ArrayList<>();
@@ -66,7 +66,8 @@ public class Main {
         kiaSportage4Generation.printType();
         System.out.println();
 
-        Bus mercedesBenzSprinter = new Bus("Meredes-Benz", "Sprinter", 3.0, evgeniy, mechanics, NumberOfSeats.SMALL);
+        Bus mercedesBenzSprinter = new Bus("Mercedes-Benz", "Sprinter", 3.0, evgeniy, mechanics, NumberOfSeats.SMALL);
+
         Truck ural = new Truck("ural", "4320", 6.6, valeriy, mechanics, LoadCapacity.N2);
 
         for (int i = 1; i <= 4; i++) {
@@ -94,9 +95,6 @@ public class Main {
         kiaSportage4Generation.fixTheCar();
         mercedesBenzSprinter.fixTheCar();
         ural.fixTheCar();
-
-        System.out.println(transports);
-        System.out.println();
         System.out.println();
 
         ladaGranta.carryOutMaintenance();
@@ -104,13 +102,15 @@ public class Main {
         System.out.println();
 
         Queue<Transport> transportQueue = new LinkedList<>();
-        transportQueue.offer(ladaGranta);
-        transportQueue.offer(audiA850LTDIQuattro);
-        transportQueue.offer(bmwZ8);
-        transportQueue.offer(kiaSportage4Generation);
-        transportQueue.offer(mercedesBenzSprinter);
-        transportQueue.offer(ural);
-        System.out.println("В очереди " + transportQueue);
+        transportQueue.add(ladaGranta);
+        transportQueue.add(audiA850LTDIQuattro);
+        transportQueue.add(bmwZ8);
+        transportQueue.add(kiaSportage4Generation);
+        transportQueue.add(mercedesBenzSprinter);
+        transportQueue.add(ural);
+        while (!transportQueue.isEmpty()) {
+            System.out.println("В очереди " + transportQueue.poll());
+        }
 
 
     }
