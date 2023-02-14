@@ -87,25 +87,35 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        Queue(ladaGranta);
-        Queue(audiA850LTDIQuattro);
-        Queue(bmwZ8);
-        Queue(kiaSportage4Generation);
-        Queue(mercedesBenzSprinter);
-        Queue(ural);
-        System.out.println();
+        ServiceStation station = new ServiceStation();
+        station.addTransportQueue(ladaGranta);
+        station.addTransportQueue(audiA850LTDIQuattro);
+        station.addTransportQueue(bmwZ8);
+        station.addTransportQueue(kiaSportage4Generation);
+        station.addTransportQueue(mercedesBenzSprinter);
+        station.addTransportQueue(ural);
 
+        station.runTO();
+        station.runTO();
+        station.runTO();
     }
+//        Queue(ladaGranta);
+//        Queue(audiA850LTDIQuattro);
+//        Queue(bmwZ8);
+//        Queue(kiaSportage4Generation);
+//        Queue(mercedesBenzSprinter);
+//        Queue(ural);
+//        System.out.println();
 
-    public static void Queue(Transport transportsQueue){
-        Queue<Transport> transports = new LinkedList<>();
-        transports.offer(transportsQueue);
-        System.out.println("Авто добавлено в очередь: " + transports.peek());
-        Transport transport;
-        while ((transport = transports.poll()) != null) {
-            System.out.println("Авто удален из очереди: " + transport);
-        }
-    }
+//    public static void Queue(Transport transportsQueue){
+//        Queue<Transport> transports = new LinkedList<>();
+//        transports.offer(transportsQueue);
+//        System.out.println("Авто добавлено в очередь: " + transports.peek());
+//        Transport transport;
+//        while ((transport = transports.poll()) != null) {
+//            System.out.println("Авто удален из очереди: " + transport);
+//        }
+//    }
 
 
     private static void printInfo(Transport<?> transport) {
