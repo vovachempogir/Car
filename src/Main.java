@@ -1,9 +1,7 @@
 import exception.CarLicenceException;
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
     protected Queue<ServiceStation> transportQueue;
@@ -68,19 +66,7 @@ public class Main {
 
         Bus mercedesBenzSprinter = new Bus("Mercedes-Benz", "Sprinter", 3.0, evgeniy, mechanics, NumberOfSeats.SMALL);
 
-        Truck ural = new Truck("ural", "4320", 6.6, valeriy, mechanics, LoadCapacity.N2);
-
-        for (int i = 1; i <= 4; i++) {
-            Driver_D driver_d = new Driver_D("Driver D " + i, true, 1 + i);
-            Bus bus = new Bus("Bus brand " + i, "Bus Brand " + i, 3.5, driverD, mechanics, NumberOfSeats.MEDIUM);
-            printInfo(bus);
-            bus.printType();
-            System.out.println();
-            Truck truck = new Truck("Truck brand " + i, "Truck model " + i, 4 + i, driverC, mechanics, LoadCapacity.N1);
-            printInfo(truck);
-            truck.printType();
-            System.out.println();
-        }
+        Truck ural = new Truck("Ural", "4320", 6.6, valeriy, mechanics, LoadCapacity.N2);
 
         transports.add(ladaGranta);
         transports.add(audiA850LTDIQuattro);
@@ -101,18 +87,24 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        Queue<Transport> transportQueue = new LinkedList<>();
-        transportQueue.add(ladaGranta);
-        transportQueue.add(audiA850LTDIQuattro);
-        transportQueue.add(bmwZ8);
-        transportQueue.add(kiaSportage4Generation);
-        transportQueue.add(mercedesBenzSprinter);
-        transportQueue.add(ural);
-        while (!transportQueue.isEmpty()) {
-            System.out.println("В очереди " + transportQueue.poll());
+        Queue(ladaGranta);
+        Queue(audiA850LTDIQuattro);
+        Queue(bmwZ8);
+        Queue(kiaSportage4Generation);
+        Queue(mercedesBenzSprinter);
+        Queue(ural);
+        System.out.println();
+
+    }
+
+    public static void Queue(Transport transportsQueue){
+        Queue<Transport> transports = new LinkedList<>();
+        transports.offer(transportsQueue);
+        System.out.println("Авто добавлено в очередь: " + transports.peek());
+        Transport transport;
+        while ((transport = transports.poll()) != null) {
+            System.out.println("Авто удален из очереди: " + transport);
         }
-
-
     }
 
 
