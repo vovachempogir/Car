@@ -97,7 +97,7 @@ public class Main {
 
         station.runTO();
         station.runTO();
-        station.runTO();
+
     }
 //        Queue(ladaGranta);
 //        Queue(audiA850LTDIQuattro);
