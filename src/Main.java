@@ -98,6 +98,28 @@ public class Main {
         station.runTO();
         station.runTO();
 
+        Map<Mechanic,Transport> transportMechanicMap = new HashMap<>();
+
+        transportMechanicMap.put(andrey, ladaGranta);
+        transportMechanicMap.put(vladimir, ladaGranta);
+        transportMechanicMap.put(andrey, audiA850LTDIQuattro);
+        transportMechanicMap.put(vladimir, audiA850LTDIQuattro);
+        transportMechanicMap.put(andrey, bmwZ8);
+        transportMechanicMap.put(vladimir, bmwZ8);
+        transportMechanicMap.put(andrey, kiaSportage4Generation);
+        transportMechanicMap.put(vladimir, kiaSportage4Generation);
+        transportMechanicMap.put(nikolay, mercedesBenzSprinter);
+        transportMechanicMap.put(vladimir, mercedesBenzSprinter);
+        transportMechanicMap.put(stanislav, ural);
+        transportMechanicMap.put(vladimir, ural);
+        for (Map.Entry<Mechanic, Transport> map : transportMechanicMap.entrySet()) {
+            System.out.println(map.getKey() + " обслуживает автомобиль - " + map.getValue());
+        }
+        System.out.println(transportMechanicMap);
+    }
+
+    private static void printInfo(Transport<?> transport) {
+        System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");
     }
 //        Queue(ladaGranta);
 //        Queue(audiA850LTDIQuattro);
@@ -118,9 +140,7 @@ public class Main {
 //    }
 
 
-    private static void printInfo(Transport<?> transport) {
-        System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");
-    }
+
 }
 
 //        Car hundaiAvante = new Car("Hundai", "Avante", 1.6,"Ораневый",2016,"Южная Корея",  203,"Механика","Седан","в67па875",5,true,null);
