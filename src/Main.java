@@ -116,6 +116,7 @@ public class Main {
             System.out.println(map.getKey() + " обслуживает автомобиль - " + map.getValue());
         }
         System.out.println(transportMechanicMap);
+
     }
 
     private static void printInfo(Transport<?> transport) {
