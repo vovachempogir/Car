@@ -88,4 +88,18 @@ public class Bus extends Transport<Driver_D> implements Competing{
         }
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), numberOfSeats);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!super.equals(obj)) return false;
+        Bus bus = (Bus) obj;
+        return numberOfSeats == bus.numberOfSeats;
+    }
+
 }

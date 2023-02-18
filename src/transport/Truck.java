@@ -90,6 +90,18 @@ public class Truck extends Transport<Driver_C> implements Competing {
         }
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), loadCapacity);
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!super.equals(obj)) return false;
+        Truck truck = (Truck) obj;
+        return loadCapacity == truck.loadCapacity;
+    }
 
 }

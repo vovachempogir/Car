@@ -2,6 +2,8 @@ package transport;
 
 import java.util.*;
 
+
+
 public class Car extends Transport<Driver_B> implements Competing {
 
     private BodyType bodyType;
@@ -120,7 +122,19 @@ public class Car extends Transport<Driver_B> implements Competing {
 
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), bodyType);
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!super.equals(obj)) return false;
+        Car car = (Car) obj;
+        return bodyType == car.bodyType;
+    }
 
     //    private double engineVolume;
 //    private String transmission;

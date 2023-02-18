@@ -97,6 +97,7 @@ public class Main {
 
         station.runTO();
         station.runTO();
+        System.out.println();
 
         Map<Mechanic,Transport> transportMechanicMap = new HashMap<>();
 

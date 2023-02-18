@@ -1,7 +1,8 @@
 package transport;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+
 
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
@@ -90,6 +91,19 @@ public abstract class Transport<T extends Driver> implements Competing {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Transport transport = (Transport) obj;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model);
     }
 }
 //    private final int year;
