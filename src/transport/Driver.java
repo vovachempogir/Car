@@ -2,6 +2,8 @@ package transport;
 
 import exception.CarLicenceException;
 
+import java.util.Objects;
+
 public abstract class Driver {
 
     private String name;
@@ -53,4 +55,22 @@ public abstract class Driver {
     public abstract void startMove();
     public abstract void stopMove();
     public abstract void refillAuto();
+
+    @Override
+    public String toString() {
+        return "Ф.И.О.: " + name + ", наличие прав: " + driverLicense + ", стаж вождения: " + practiceDriveInYears;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, driverLicense, practiceDriveInYears);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return driverLicense == driver.driverLicense && practiceDriveInYears == driver.practiceDriveInYears && Objects.equals(name, driver.name);
+    }
 }

@@ -118,6 +118,20 @@ public class Main {
         }
         System.out.println(transportMechanicMap);
 
+        Set<Driver> driverSet = new HashSet<>();
+        driverSet.add(sergey);
+        driverSet.add(mikhail);
+        driverSet.add(konstantin);
+        driverSet.add(vladislav);
+        driverSet.add(evgeniy);
+        driverSet.add(driverD);
+        driverSet.add(valeriy);
+        driverSet.add(driverC);
+        Iterator<Driver> iterator = driverSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
     }
 
     private static void printInfo(Transport<?> transport) {
